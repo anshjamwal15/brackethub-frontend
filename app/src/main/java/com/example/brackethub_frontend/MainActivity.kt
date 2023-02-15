@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
             BrackethubfrontendTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colors.background) {
-                    Greeting("binod")
+                    Greeting("welcome")
                 }
             }
         }
@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun Greeting(name: String) {
-    Text(text = "Hello $name!")
+    Text(text = "Hello, $name!")
 }
 
 @Preview(showBackground = true)
