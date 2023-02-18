@@ -12,9 +12,8 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.sp
-import androidx.core.content.ContextCompat
 import com.example.brackethub_frontend.ui.screens.register.RegisterScreen
+import com.example.brackethub_frontend.ui.screens.register.RegisterScreen2
 import com.example.brackethub_frontend.ui.screens.splash.SplashScreen
 import com.example.brackethub_frontend.ui.theme.BrackethubfrontendTheme
 
@@ -28,7 +27,8 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                 ) {
 //                    SplashScreen()
-                    RegisterScreen()
+//                    RegisterScreen()
+                    RegisterScreen2()
                 }
             }
         }

@@ -1,11 +1,9 @@
 package com.example.brackethub_frontend.ui.screens.splash
 
-import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.Button
-import androidx.compose.material.ButtonColors
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -20,7 +18,6 @@ import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.brackethub_frontend.R
@@ -60,7 +57,7 @@ fun SplashScreen() {
         modifier = Modifier
             .padding(27.dp)
             .offset(0.dp, 520.dp)
-    ){
+    ) {
         Text(
             style = TextStyle(
                 color = Color.White,
@@ -85,7 +82,9 @@ fun SplashScreen() {
         }
         Spacer(modifier = Modifier.padding(5.dp))
         Button(
-            modifier = Modifier.fillMaxWidth().height(45.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(45.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF6C63FF)),
             onClick = { /*TODO*/ }
         ) {
@@ -99,7 +98,9 @@ fun SplashScreen() {
         }
         Spacer(modifier = Modifier.padding(10.dp))
         Button(
-            modifier = Modifier.fillMaxWidth().height(45.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(45.dp),
             colors = ButtonDefaults.buttonColors(backgroundColor = Color(0xFF737AAE)),
             onClick = { /*TODO*/ }
         ) {
@@ -114,7 +115,6 @@ fun SplashScreen() {
     }
 
 
-    
 //    Canvas(
 //        modifier = Modifier
 //            .width(900.dp)
@@ -124,7 +124,6 @@ fun SplashScreen() {
 //            drawCircle(color = Color(0xFF737AAE).copy(0.2f))
 //        }
 //    )
-
 
 
 }

@@ -12,7 +12,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.brackethub_frontend.R
@@ -23,7 +22,7 @@ import com.example.brackethub_frontend.utils.MyTriangle
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen2() {
     val systemUiController = rememberSystemUiController()
     SideEffect {
         systemUiController.setNavigationBarColor(
@@ -42,7 +41,6 @@ fun RegisterScreen() {
             .background(Color(0xFF2E325C)),
     ) {
 
-
         BackArrow(
             Modifier
                 .width(35.dp)
@@ -59,7 +57,7 @@ fun RegisterScreen() {
                     fontFamily = FontFamily(Font(R.font.poppins_bold)),
                     fontSize = 25.sp
                 ),
-                text = "Enter email"
+                text = "Register"
             )
         }
 
@@ -85,7 +83,9 @@ fun RegisterScreen() {
         )
 
         Column {
-            val userEmail by remember { mutableStateOf("Enter email") }
+            val userName by remember { mutableStateOf("What should everyone call you?") }
+
+            val password by remember { mutableStateOf("Password") }
 
             Column {
                 Text(
@@ -96,18 +96,17 @@ fun RegisterScreen() {
                         fontFamily = FontFamily(Font(R.font.poppins_bold)),
                         fontSize = 15.sp
                     ),
-                    text = "EMAIL"
+                    text = "PICK A USERNAME"
                 )
 
                 Text(
-                    modifier = Modifier.offset(50.dp, 300.dp),
+                    modifier = Modifier.offset(50.dp, 290.dp),
                     style = TextStyle(
-                        color = Color(0xFF0DA9E9),
-                        fontWeight = FontWeight(100),
+                        color = Color.White,
                         fontFamily = FontFamily(Font(R.font.poppins_regular)),
-                        fontSize = 15.sp
+                        fontSize = 12.sp
                     ),
-                    text = "View our Privacy Policy"
+                    text = "You can always change this later!"
                 )
 
                 Spacer(modifier = Modifier.padding(15.dp))
@@ -120,9 +119,35 @@ fun RegisterScreen() {
                         textColor = Color.Black,
                         backgroundColor = Color.White
                     ),
-                    value = userEmail,
+                    value = userName,
                     onValueChange = { "" },
                     shape = RoundedCornerShape(5.dp),
+                )
+
+                Spacer(modifier = Modifier.padding(5.dp))
+                TextField(
+                    modifier = Modifier
+                        .offset(50.dp, 205.dp)
+                        .height(50.dp)
+                        .width(300.dp),
+                    colors = TextFieldDefaults.textFieldColors(
+                        textColor = Color.Black,
+                        backgroundColor = Color.White
+                    ),
+                    value = password,
+                    onValueChange = { "" },
+                    shape = RoundedCornerShape(5.dp),
+                )
+
+                Spacer(modifier = Modifier.padding(5.dp))
+                Text(
+                    modifier = Modifier.offset(50.dp, 205.dp),
+                    style = TextStyle(
+                        color = Color.White,
+                        fontFamily = FontFamily(Font(R.font.poppins_regular)),
+                        fontSize = 12.sp
+                    ),
+                    text = "Password must be 6-72 characters"
                 )
 
                 Spacer(modifier = Modifier.padding(5.dp))
@@ -139,12 +164,10 @@ fun RegisterScreen() {
                             fontFamily = FontFamily(Font(R.font.poppins_medium)),
                             color = Color.White
                         ),
-                        text = "Next",
-                        textAlign = TextAlign.Center
+                        text = "Create an account"
                     )
                 }
             }
         }
     }
 }
-
