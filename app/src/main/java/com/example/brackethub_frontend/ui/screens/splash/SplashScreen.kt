@@ -27,8 +27,7 @@ import com.example.brackethub_frontend.R
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 @Composable
-fun SplashScreen(
-) {
+fun SplashScreen() {
     val systemUiController = rememberSystemUiController()
     SideEffect {
         systemUiController.setNavigationBarColor(
@@ -42,7 +41,7 @@ fun SplashScreen(
     }
 
 
-    Column(
+    Box(
         modifier = Modifier
             .background(Color(0xFF2E325C)),
     ) {

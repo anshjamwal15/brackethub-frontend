@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.core.content.ContextCompat
+import com.example.brackethub_frontend.ui.screens.register.RegisterScreen
 import com.example.brackethub_frontend.ui.screens.splash.SplashScreen
 import com.example.brackethub_frontend.ui.theme.BrackethubfrontendTheme
 
@@ -21,13 +22,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            this.window.statusBarColor = ContextCompat.getColor(this, R.color.purple_200)
             BrackethubfrontendTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                 ) {
-                    SplashScreen()
+//                    SplashScreen()
+                    RegisterScreen()
                 }
             }
         }
@@ -39,7 +40,9 @@ class MainActivity : ComponentActivity() {
 fun DefaultPreview() {
     BrackethubfrontendTheme {
         Box(
-            modifier = Modifier.fillMaxSize().background(Color(0xFF2E325C)),
+            modifier = Modifier
+                .fillMaxSize()
+                .background(Color(0xFF2E325C)),
         ) {
             SplashScreen()
         }
