@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.brackethub_frontend.ui.screens.login.LoginScreen
 import com.example.brackethub_frontend.ui.screens.register.RegisterScreen
 import com.example.brackethub_frontend.ui.screens.register.RegisterScreen2
 import com.example.brackethub_frontend.ui.screens.splash.SplashScreen
@@ -28,7 +29,8 @@ class MainActivity : ComponentActivity() {
                 ) {
 //                    SplashScreen()
 //                    RegisterScreen()
-                    RegisterScreen2()
+//                    RegisterScreen2()
+                    LoginScreen()
                 }
             }
         }
