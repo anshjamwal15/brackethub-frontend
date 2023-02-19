@@ -12,6 +12,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.brackethub_frontend.ui.screens.home.HomeScreen
 import com.example.brackethub_frontend.ui.screens.login.LoginScreen
 import com.example.brackethub_frontend.ui.screens.register.RegisterScreen
 import com.example.brackethub_frontend.ui.screens.register.RegisterScreen2
@@ -30,7 +31,8 @@ class MainActivity : ComponentActivity() {
 //                    SplashScreen()
 //                    RegisterScreen()
 //                    RegisterScreen2()
-                    LoginScreen()
+//                    LoginScreen()
+                    HomeScreen()
                 }
             }
         }
@@ -41,12 +43,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     BrackethubfrontendTheme {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Color(0xFF2E325C)),
-        ) {
-            SplashScreen()
-        }
+        HomeScreen()
     }
 }
