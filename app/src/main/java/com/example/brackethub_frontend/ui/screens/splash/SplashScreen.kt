@@ -113,17 +113,4 @@ fun SplashScreen() {
             )
         }
     }
-
-
-//    Canvas(
-//        modifier = Modifier
-//            .width(900.dp)
-//            .height(900.dp)
-//            .offset(0.dp, 350.dp),
-//        onDraw = {
-//            drawCircle(color = Color(0xFF737AAE).copy(0.2f))
-//        }
-//    )
-
-
 }
