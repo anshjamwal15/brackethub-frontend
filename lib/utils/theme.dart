@@ -7,13 +7,20 @@ ThemeData theme() {
     useMaterial3: true,
     scaffoldBackgroundColor: kBackgroundColor,
     fontFamily: "Poppins",
-    appBarTheme: appBarTheme(),
+    // appBarTheme: appBarTheme(),
     // primaryColor: kPrimaryColor,
     // colorSchemeSeed: kPrimaryColor,
     // textTheme: Theme.of(context).textTheme.apply(bodyColor: kTextColor),
     // inputDecorationTheme: inputDecorationTheme(),
     // textTheme: textTheme(),
     visualDensity: VisualDensity.adaptivePlatformDensity,
+  );
+}
+
+AppBar appBar() {
+  return AppBar(
+    leading: BackButton(onPressed: () {}, color: Colors.white),
+    backgroundColor: kBackgroundColor,
   );
 }
 
