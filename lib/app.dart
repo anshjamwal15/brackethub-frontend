@@ -1,4 +1,4 @@
-import 'package:brackethub_app/screens/login/login.dart';
+import 'package:brackethub_app/screens/auth/login/login.dart';
 import 'package:brackethub_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 
