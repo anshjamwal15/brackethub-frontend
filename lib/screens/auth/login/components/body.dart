@@ -9,6 +9,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: appBar(),
       body: SingleChildScrollView(
@@ -23,14 +24,28 @@ class Body extends StatelessWidget {
               ),
             ),
             const InputFields(),
-            const Padding(
-              padding: EdgeInsets.only(left: 5),
-              child: Row(
+            Padding(
+              padding: const EdgeInsets.only(left: 5, right: 5),
+              child: Column(
                 children: [
-                  CustomCheckBox(),
-                  Text(
-                    "Remember me",
-                    style: TextStyle(color: Colors.white, fontSize: 15),
+                  const Row(
+                    children: [
+                      CustomCheckBox(),
+                      Text(
+                        "Remember me",
+                        style: TextStyle(color: Colors.white, fontSize: 15),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  SizedBox(
+                    height: 1,
+                    width: size.width * 0.60,
+                    child: Container(
+                      color: kPrimaryColor,
+                    ),
                   ),
                 ],
               ),
@@ -54,7 +69,7 @@ class Body extends StatelessWidget {
                   ),
                 ),
               ),
-            )
+            ),
           ],
         ),
       ),
