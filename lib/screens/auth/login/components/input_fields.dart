@@ -63,7 +63,11 @@ class _InputFieldsState extends State<InputFields> {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(top: 50, left: 20),
+      padding: EdgeInsets.only(
+        top: size.height * 0.05,
+        left: size.width * 0.04,
+        right: size.width * 0.04,
+      ),
       child: SizedBox(
         width: size.width * 0.87,
         child: Form(
@@ -71,9 +75,10 @@ class _InputFieldsState extends State<InputFields> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Email",
-                style: TextStyle(color: Colors.white, fontSize: 15),
+                style:
+                    TextStyle(color: Colors.white, fontSize: size.width * 0.04),
               ),
               TextFormField(
                 controller: _emailController,
@@ -88,10 +93,11 @@ class _InputFieldsState extends State<InputFields> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: size.height * 0.02),
+              Text(
                 "Password",
-                style: TextStyle(color: Colors.white, fontSize: 15),
+                style:
+                    TextStyle(color: Colors.white, fontSize: size.width * 0.04),
               ),
               TextFormField(
                 controller: _passwordController,
@@ -120,7 +126,7 @@ class _InputFieldsState extends State<InputFields> {
                   ),
                 ),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: size.height * 0.02),
             ],
           ),
         ),

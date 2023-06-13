@@ -16,55 +16,62 @@ class Body extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Padding(
-              padding: EdgeInsets.only(top: 20, left: 20),
+            Padding(
+              padding: EdgeInsets.only(
+                top: size.height * 0.03,
+                left: size.width * 0.04,
+              ),
               child: Text(
                 "Hello there!",
-                style: TextStyle(color: Colors.white, fontSize: 30),
+                style:
+                    TextStyle(color: Colors.white, fontSize: size.width * 0.08),
               ),
             ),
             const InputFields(),
-            Padding(
-              padding: const EdgeInsets.only(left: 5, right: 5),
-              child: Column(
-                children: [
-                  const Row(
-                    children: [
-                      CustomCheckBox(),
-                      Text(
-                        "Remember me",
-                        style: TextStyle(color: Colors.white, fontSize: 15),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  SizedBox(
-                    height: 1,
-                    width: size.width * 0.60,
-                    child: Container(
-                      color: kPrimaryColor,
+            Column(
+              children: [
+                Row(
+                  children: [
+                    const CustomCheckBox(),
+                    Text(
+                      "Remember me",
+                      style: TextStyle(
+                          color: Colors.white, fontSize: size.width * 0.04),
                     ),
+                  ],
+                ),
+                SizedBox(
+                  height: size.height * 0.03,
+                ),
+                SizedBox(
+                  height: 1,
+                  width: size.width * 0.80,
+                  child: Container(
+                    color: kPrimaryColor,
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 300, left: 30, right: 30),
+              padding: EdgeInsets.only(
+                top: size.height * 0.33,
+                left: size.width * 0.1,
+                right: size.width * 0.1,
+              ),
               child: Material(
                 color: kPrimaryColor,
-                borderRadius: BorderRadius.circular(50),
+                borderRadius: BorderRadius.circular(size.width * 0.1),
                 child: InkWell(
                   onTap: () {},
-                  borderRadius: BorderRadius.circular(50),
+                  borderRadius: BorderRadius.circular(size.width * 0.1),
                   child: Container(
-                    width: 500,
-                    height: 50,
+                    width: double.infinity,
+                    height: size.height * 0.07,
                     alignment: Alignment.center,
-                    child: const Text(
-                      style: TextStyle(color: Colors.white),
+                    child: Text(
                       'LOGIN',
+                      style: TextStyle(
+                          color: Colors.white, fontSize: size.width * 0.05),
                     ),
                   ),
                 ),
