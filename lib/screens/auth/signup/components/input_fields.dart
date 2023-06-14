@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:brackethub_app/utils/app_style.dart';
+import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
 
 class InputFields extends StatefulWidget {
@@ -11,16 +12,20 @@ class InputFields extends StatefulWidget {
 
 class _InputFieldsState extends State<InputFields> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
-  String? _emailErrorText;
-  String? _passErrorText;
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _countryController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+  String? _phoneErrorText;
 
   @override
   void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
+    _fullNameController.dispose();
+    _dateController.dispose();
+    _phoneController.dispose();
+    _countryController.dispose();
+    _ageController.dispose();
     super.dispose();
   }
 
@@ -39,38 +44,18 @@ class _InputFieldsState extends State<InputFields> {
     }
   }
 
-  void _validateEmail(String value) {
+  void _validatePhone(String value) {
     if (value.isEmpty) {
       setState(() {
-        _emailErrorText = 'Please enter an email address';
+        _phoneErrorText = 'Please enter a phone number';
       });
-    } else {
-      String pattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
-      RegExp regex = RegExp(pattern);
-      if (!regex.hasMatch(value)) {
-        setState(() {
-          _emailErrorText = 'Please enter a valid email address';
-        });
-      } else {
-        setState(() {
-          _emailErrorText = null;
-        });
-      }
-    }
-  }
-
-  void _validatePassword(String value) {
-    if (value.isEmpty) {
+    } else if (value.length < 10) {
       setState(() {
-        _passErrorText = 'Please enter a password';
-      });
-    } else if (value.length < 8) {
-      setState(() {
-        _passErrorText = 'Password must be at least 8 characters long';
+        _phoneErrorText = 'Please enter a valid 10-digit phone number';
       });
     } else {
       setState(() {
-        _passErrorText = null;
+        _phoneErrorText = null;
       });
     }
   }
@@ -98,7 +83,7 @@ class _InputFieldsState extends State<InputFields> {
                   fontSize: size.width * 0.04,
                 ),
               ),
-              customInputField(_emailController, _validateEmail),
+              customInputField(_fullNameController),
               SizedBox(height: size.height * 0.03),
               Text(
                 "Date of Birth",
@@ -109,12 +94,10 @@ class _InputFieldsState extends State<InputFields> {
               ),
               TextFormField(
                 controller: _dateController,
-                onChanged: _validatePassword,
                 style: const TextStyle(color: Colors.white),
                 cursorColor: kPrimaryColor,
                 readOnly: true,
                 decoration: InputDecoration(
-                  errorText: _passErrorText,
                   border: const UnderlineInputBorder(),
                   focusedBorder: const UnderlineInputBorder(
                     borderSide: BorderSide(color: kPrimaryColor),
@@ -136,7 +119,11 @@ class _InputFieldsState extends State<InputFields> {
                   fontSize: size.width * 0.04,
                 ),
               ),
-              customInputField(_emailController, _validateEmail),
+              phoneNumberField(
+                _phoneController,
+                _validatePhone,
+                _phoneErrorText,
+              ),
               SizedBox(height: size.height * 0.03),
               Text(
                 "Country",
@@ -145,7 +132,7 @@ class _InputFieldsState extends State<InputFields> {
                   fontSize: size.width * 0.04,
                 ),
               ),
-              customInputField(_emailController, _validateEmail),
+              customInputField(_countryController),
               SizedBox(height: size.height * 0.03),
               Text(
                 "Age",
@@ -154,7 +141,7 @@ class _InputFieldsState extends State<InputFields> {
                   fontSize: size.width * 0.04,
                 ),
               ),
-              customInputField(_emailController, _validateEmail),
+              customInputField(_ageController),
             ],
           ),
         ),
@@ -163,9 +150,8 @@ class _InputFieldsState extends State<InputFields> {
   }
 }
 
-Widget customInputField(
-    TextEditingController controller, Function(String)? onChange,
-    [String? errorText]) {
+Widget customInputField(TextEditingController controller,
+    [Function(String)? onChange, String? errorText]) {
   return TextFormField(
     controller: controller,
     onChanged: onChange,
@@ -173,6 +159,31 @@ Widget customInputField(
     cursorColor: kPrimaryColor,
     decoration: InputDecoration(
       errorText: errorText,
+      border: const UnderlineInputBorder(),
+      focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: kPrimaryColor),
+      ),
+    ),
+  );
+}
+
+Widget phoneNumberField(TextEditingController controller,
+    Function(String)? onChange, String? errorText) {
+  return TextFormField(
+    keyboardType: TextInputType.phone,
+    inputFormatters: [
+      FilteringTextInputFormatter.digitsOnly,
+      LengthLimitingTextInputFormatter(10),
+    ],
+    controller: controller,
+    onChanged: onChange,
+    style: const TextStyle(color: Colors.white),
+    cursorColor: kPrimaryColor,
+    decoration: InputDecoration(
+      prefixText: '+91 ',
+      errorText: errorText,
+      prefixStyle:
+          const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
       border: const UnderlineInputBorder(),
       focusedBorder: const UnderlineInputBorder(
         borderSide: BorderSide(color: kPrimaryColor),
