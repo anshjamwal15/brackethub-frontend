@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:brackethub_app/utils/app_style.dart';
+import 'package:intl/intl.dart';
 
 class InputFields extends StatefulWidget {
   const InputFields({super.key});
@@ -12,7 +13,7 @@ class _InputFieldsState extends State<InputFields> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool _isPasswordVisible = false;
+  final TextEditingController _dateController = TextEditingController();
   String? _emailErrorText;
   String? _passErrorText;
 
@@ -21,6 +22,21 @@ class _InputFieldsState extends State<InputFields> {
     _emailController.dispose();
     _passwordController.dispose();
     super.dispose();
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2100),
+    );
+
+    if (picked != null) {
+      setState(() {
+        _dateController.text = DateFormat('yyyy-MM-dd').format(picked);
+      });
+    }
   }
 
   void _validateEmail(String value) {
@@ -76,37 +92,27 @@ class _InputFieldsState extends State<InputFields> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "Email",
+                "Full Name",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: size.width * 0.04,
+                ),
+              ),
+              customInputField(_emailController, _validateEmail),
+              SizedBox(height: size.height * 0.03),
+              Text(
+                "Date of Birth",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: size.width * 0.04,
                 ),
               ),
               TextFormField(
-                controller: _emailController,
-                onChanged: _validateEmail,
-                style: const TextStyle(color: Colors.white),
-                cursorColor: kPrimaryColor,
-                decoration: InputDecoration(
-                  errorText: _emailErrorText,
-                  border: const UnderlineInputBorder(),
-                  focusedBorder: const UnderlineInputBorder(
-                    borderSide: BorderSide(color: kPrimaryColor),
-                  ),
-                ),
-              ),
-              SizedBox(height: size.height * 0.02),
-              Text(
-                "Password",
-                style:
-                    TextStyle(color: Colors.white, fontSize: size.width * 0.04),
-              ),
-              TextFormField(
-                controller: _passwordController,
+                controller: _dateController,
                 onChanged: _validatePassword,
                 style: const TextStyle(color: Colors.white),
                 cursorColor: kPrimaryColor,
-                obscureText: !_isPasswordVisible,
+                readOnly: true,
                 decoration: InputDecoration(
                   errorText: _passErrorText,
                   border: const UnderlineInputBorder(),
@@ -114,25 +120,63 @@ class _InputFieldsState extends State<InputFields> {
                     borderSide: BorderSide(color: kPrimaryColor),
                   ),
                   suffixIcon: GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        _isPasswordVisible = !_isPasswordVisible;
-                      });
-                    },
-                    child: Icon(
+                    onTap: () => _selectDate(context),
+                    child: const Icon(
+                      Icons.calendar_month,
                       color: kPrimaryColor,
-                      _isPasswordVisible
-                          ? Icons.visibility_off
-                          : Icons.visibility,
                     ),
                   ),
                 ),
               ),
-              SizedBox(height: size.height * 0.02),
+              SizedBox(height: size.height * 0.03),
+              Text(
+                "Phone Number",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: size.width * 0.04,
+                ),
+              ),
+              customInputField(_emailController, _validateEmail),
+              SizedBox(height: size.height * 0.03),
+              Text(
+                "Country",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: size.width * 0.04,
+                ),
+              ),
+              customInputField(_emailController, _validateEmail),
+              SizedBox(height: size.height * 0.03),
+              Text(
+                "Age",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: size.width * 0.04,
+                ),
+              ),
+              customInputField(_emailController, _validateEmail),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+Widget customInputField(
+    TextEditingController controller, Function(String)? onChange,
+    [String? errorText]) {
+  return TextFormField(
+    controller: controller,
+    onChanged: onChange,
+    style: const TextStyle(color: Colors.white),
+    cursorColor: kPrimaryColor,
+    decoration: InputDecoration(
+      errorText: errorText,
+      border: const UnderlineInputBorder(),
+      focusedBorder: const UnderlineInputBorder(
+        borderSide: BorderSide(color: kPrimaryColor),
+      ),
+    ),
+  );
 }
