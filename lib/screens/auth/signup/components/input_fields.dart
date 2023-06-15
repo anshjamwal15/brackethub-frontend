@@ -15,7 +15,6 @@ class _InputFieldsState extends State<InputFields> {
   final TextEditingController _fullNameController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
-  final TextEditingController _countryController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   String? _phoneErrorText;
 
@@ -24,7 +23,6 @@ class _InputFieldsState extends State<InputFields> {
     _fullNameController.dispose();
     _dateController.dispose();
     _phoneController.dispose();
-    _countryController.dispose();
     _ageController.dispose();
     super.dispose();
   }
@@ -60,6 +58,22 @@ class _InputFieldsState extends State<InputFields> {
     }
   }
 
+  void _validateAge(String value) {
+    if (value.isEmpty) {
+      setState(() {
+        _phoneErrorText = 'Please enter age';
+      });
+    } else if (value.length < 10) {
+      setState(() {
+        _phoneErrorText = 'Please enter a valid 10-digit phone number';
+      });
+    } else {
+      setState(() {
+        _phoneErrorText = null;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
@@ -83,7 +97,7 @@ class _InputFieldsState extends State<InputFields> {
                   fontSize: size.width * 0.04,
                 ),
               ),
-              customInputField(_fullNameController),
+              customInputField(_fullNameController, false),
               SizedBox(height: size.height * 0.03),
               Text(
                 "Date of Birth",
@@ -126,22 +140,14 @@ class _InputFieldsState extends State<InputFields> {
               ),
               SizedBox(height: size.height * 0.03),
               Text(
-                "Country",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: size.width * 0.04,
-                ),
-              ),
-              customInputField(_countryController),
-              SizedBox(height: size.height * 0.03),
-              Text(
                 "Age",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: size.width * 0.04,
                 ),
               ),
-              customInputField(_ageController),
+              customInputField(_ageController, true),
+              SizedBox(height: size.height * 0.03),
             ],
           ),
         ),
@@ -150,9 +156,14 @@ class _InputFieldsState extends State<InputFields> {
   }
 }
 
-Widget customInputField(TextEditingController controller,
+Widget customInputField(TextEditingController controller, bool isNumber,
     [Function(String)? onChange, String? errorText]) {
   return TextFormField(
+    keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
+    inputFormatters: isNumber ? [
+    FilteringTextInputFormatter.digitsOnly,
+      LengthLimitingTextInputFormatter(2)
+      ] : [],
     controller: controller,
     onChanged: onChange,
     style: const TextStyle(color: Colors.white),

@@ -1,4 +1,5 @@
 import 'package:brackethub_app/screens/auth/signup/signup.dart';
+import 'package:brackethub_app/screens/auth/splash/splash.dart';
 import 'package:brackethub_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class _AppState extends State<App> {
       debugShowCheckedModeBanner: false,
       title: 'Bracket Hub',
       theme: theme(),
-      home: const SignUp(),
+      home: const Splash(),
     );
   }
 }

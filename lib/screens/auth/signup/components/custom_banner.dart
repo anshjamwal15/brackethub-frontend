@@ -36,15 +36,12 @@ class CustomBanner extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(
-          height: size.height * 0.01,
-        ),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Don't worry your data will be private and only you can see it.",
+              "Don't worry your data will remain private and",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: size.width * 0.04,
@@ -52,8 +49,18 @@ class CustomBanner extends StatelessWidget {
             ),
           ],
         ),
-        SizedBox(
-          height: size.height * 0.01,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              "only you can see it.",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: size.width * 0.04,
+              ),
+            ),
+          ],
         ),
       ],
     );

@@ -50,11 +50,21 @@ class Body extends StatelessWidget {
                     color: kPrimaryColor,
                   ),
                 ),
+                SizedBox(
+                  height: size.height * 0.02,
+                ),
+                Text(
+                  "Forgot Password?",
+                  style: TextStyle(
+                    color: kPrimaryColor,
+                    fontSize: size.width * 0.04,
+                  ),
+                ),
               ],
             ),
             Padding(
               padding: EdgeInsets.only(
-                top: size.height * 0.33,
+                top: size.height * 0.27,
                 left: size.width * 0.1,
                 right: size.width * 0.1,
               ),
