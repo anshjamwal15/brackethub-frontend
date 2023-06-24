@@ -11,7 +11,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       body: SingleChildScrollView(
         child: Column(
           children: [
@@ -20,21 +20,19 @@ class Body extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(
                 top: size.height * 0.1,
-                left: size.width * 0.1,
-                right: size.width * 0.1,
+                left: size.width * 0.04,
+                right: size.width * 0.04,
               ),
-              child: Material(
-                color: kPrimaryColor,
-                borderRadius: BorderRadius.circular(size.width * 0.1),
-                child: InkWell(
-                  onTap: () {},
+              child: GestureDetector(
+                child: Material(
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.circular(size.width * 0.1),
                   child: Container(
                     width: double.infinity,
                     height: size.height * 0.07,
                     alignment: Alignment.center,
                     child: Text(
-                      'LOGIN',
+                      'CONTINUE',
                       style: TextStyle(
                           color: Colors.white, fontSize: size.width * 0.05),
                     ),

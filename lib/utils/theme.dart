@@ -17,9 +17,10 @@ ThemeData theme() {
   );
 }
 
-AppBar appBar() {
+AppBar appBar(BuildContext context) {
   return AppBar(
-    leading: BackButton(onPressed: () {}, color: Colors.white),
+    leading: BackButton(
+        onPressed: () => Navigator.pop(context), color: Colors.white),
     backgroundColor: kBackgroundColor,
   );
 }

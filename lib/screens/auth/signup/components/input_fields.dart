@@ -17,6 +17,7 @@ class _InputFieldsState extends State<InputFields> {
   final TextEditingController _phoneController = TextEditingController();
   final TextEditingController _ageController = TextEditingController();
   String? _phoneErrorText;
+  String? _ageErrorText;
 
   @override
   void dispose() {
@@ -61,15 +62,15 @@ class _InputFieldsState extends State<InputFields> {
   void _validateAge(String value) {
     if (value.isEmpty) {
       setState(() {
-        _phoneErrorText = 'Please enter age';
+        _ageErrorText = 'Please enter age';
       });
-    } else if (value.length < 10) {
+    } else if (int.parse(value) < 18) {
       setState(() {
-        _phoneErrorText = 'Please enter a valid 10-digit phone number';
+        _ageErrorText = 'Please enter a valid age';
       });
     } else {
       setState(() {
-        _phoneErrorText = null;
+        _ageErrorText = null;
       });
     }
   }
@@ -146,7 +147,12 @@ class _InputFieldsState extends State<InputFields> {
                   fontSize: size.width * 0.04,
                 ),
               ),
-              customInputField(_ageController, true),
+              customInputField(
+                _ageController,
+                true,
+                _validateAge,
+                _ageErrorText,
+              ),
               SizedBox(height: size.height * 0.03),
             ],
           ),
@@ -160,10 +166,12 @@ Widget customInputField(TextEditingController controller, bool isNumber,
     [Function(String)? onChange, String? errorText]) {
   return TextFormField(
     keyboardType: isNumber ? TextInputType.phone : TextInputType.text,
-    inputFormatters: isNumber ? [
-    FilteringTextInputFormatter.digitsOnly,
-      LengthLimitingTextInputFormatter(2)
-      ] : [],
+    inputFormatters: isNumber
+        ? [
+            FilteringTextInputFormatter.digitsOnly,
+            LengthLimitingTextInputFormatter(2)
+          ]
+        : [],
     controller: controller,
     onChanged: onChange,
     style: const TextStyle(color: Colors.white),

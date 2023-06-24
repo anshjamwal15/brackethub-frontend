@@ -1,5 +1,7 @@
+import 'package:brackethub_app/screens/auth/forgot_password/forgot_password.dart';
 import 'package:brackethub_app/screens/auth/login/components/custom_checkbox.dart';
 import 'package:brackethub_app/screens/auth/login/components/input_fields.dart';
+import 'package:brackethub_app/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/utils/theme.dart';
@@ -11,7 +13,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: appBar(),
+      appBar: appBar(context),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,11 +55,14 @@ class Body extends StatelessWidget {
                 SizedBox(
                   height: size.height * 0.02,
                 ),
-                Text(
-                  "Forgot Password?",
-                  style: TextStyle(
-                    color: kPrimaryColor,
-                    fontSize: size.width * 0.04,
+                GestureDetector(
+                  onTap: () => smoothNavigate(context, const ForgotPassword()),
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(
+                      color: kPrimaryColor,
+                      fontSize: size.width * 0.04,
+                    ),
                   ),
                 ),
               ],
@@ -65,14 +70,12 @@ class Body extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(
                 top: size.height * 0.27,
-                left: size.width * 0.1,
-                right: size.width * 0.1,
+                left: size.width * 0.04,
+                right: size.width * 0.04,
               ),
-              child: Material(
-                color: kPrimaryColor,
-                borderRadius: BorderRadius.circular(size.width * 0.1),
-                child: InkWell(
-                  onTap: () {},
+              child: GestureDetector(
+                child: Material(
+                  color: kPrimaryColor,
                   borderRadius: BorderRadius.circular(size.width * 0.1),
                   child: Container(
                     width: double.infinity,

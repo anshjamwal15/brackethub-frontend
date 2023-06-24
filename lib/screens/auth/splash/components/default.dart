@@ -14,7 +14,10 @@ class _DefaultState extends State<Default> {
   @override
   void initState() {
     super.initState();
-    smoothNavigate(context, const Body());
+    Future.delayed(
+      const Duration(seconds: 1),
+      () => smoothNavigate(context, const Body()),
+    );
   }
 
   @override

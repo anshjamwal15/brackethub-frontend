@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void smoothNavigate(BuildContext context, Widget page) {
-  Future.delayed(const Duration(seconds: 2), () {
-    Navigator.pushReplacement(
+void smoothNavigate(BuildContext context, Widget page, {bool? pop}) {
+  Future.delayed(const Duration(milliseconds: 500), () {
+    Navigator.push(
       context,
       PageRouteBuilder(
         transitionDuration: const Duration(milliseconds: 800),
