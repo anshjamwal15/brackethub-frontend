@@ -1,10 +1,9 @@
 import 'package:brackethub_app/screens/auth/forgot_password/forgot_password.dart';
 import 'package:brackethub_app/screens/auth/login/components/custom_checkbox.dart';
 import 'package:brackethub_app/screens/auth/login/components/input_fields.dart';
+import 'package:brackethub_app/screens/home/home.dart';
 import 'package:brackethub_app/utils/utils.dart';
 import 'package:flutter/material.dart';
-import 'package:brackethub_app/utils/app_style.dart';
-import 'package:brackethub_app/utils/theme.dart';
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -74,6 +73,7 @@ class Body extends StatelessWidget {
                 right: size.width * 0.04,
               ),
               child: GestureDetector(
+                onTap: () => smoothNavigate(context, const Home()),
                 child: Material(
                   color: kPrimaryColor,
                   borderRadius: BorderRadius.circular(size.width * 0.1),
