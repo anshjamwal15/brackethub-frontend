@@ -1,5 +1,4 @@
 import 'package:brackethub_app/screens/auth/forgot_password/components/custom_banner.dart';
-import 'package:brackethub_app/screens/auth/signup/components/input_fields.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/utils/theme.dart';
 import 'package:flutter/material.dart';
