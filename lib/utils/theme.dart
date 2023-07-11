@@ -83,3 +83,25 @@ Text customText(String text, double fontSize, FontWeight weight) {
     ),
   );
 }
+
+Text customSecondaryText(String text, double fontSize, FontWeight weight) {
+  return Text(
+    text,
+    textAlign: TextAlign.center,
+    style: TextStyle(
+      fontSize: fontSize,
+      fontWeight: weight,
+      foreground: Paint()
+        ..shader = const LinearGradient(
+          colors: [
+            Color.fromARGB(255, 201, 201, 201),
+            Color.fromARGB(255, 201, 201, 201),
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ).createShader(
+          const Rect.fromLTWH(0, 0, 200, 70),
+        ),
+    ),
+  );
+}

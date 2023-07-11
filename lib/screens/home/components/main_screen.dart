@@ -1,5 +1,4 @@
 import 'package:brackethub_app/utils/app_style.dart';
-import 'package:brackethub_app/utils/smooth_page_transition.dart';
 import 'package:brackethub_app/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';

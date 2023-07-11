@@ -1,4 +1,7 @@
+import 'package:brackethub_app/screens/friends/friends_section.dart';
+import 'package:brackethub_app/screens/home/home.dart';
 import 'package:brackethub_app/utils/app_style.dart';
+import 'package:brackethub_app/utils/smooth_page_transition.dart';
 import 'package:flutter/material.dart';
 
 class CustomNavigationBar extends StatefulWidget {
@@ -25,6 +28,16 @@ class _CustomNavigationBarState extends State<CustomNavigationBar> {
         setState(() {
           selectedIndex = value;
         });
+        switch (value) {
+          case 0:
+            smoothNavigate(context, const Home());
+            break;
+          case 1:
+            smoothNavigate(context, const FriendsSection());
+            break;
+          default:
+            break;
+        }
       },
       items: const [
         BottomNavigationBarItem(

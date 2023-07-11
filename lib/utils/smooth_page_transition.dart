@@ -7,10 +7,14 @@ const curve = Curves.ease;
 var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
 
 void smoothNavigate(BuildContext context, Widget page) {
+  if (ModalRoute.of(context)?.settings.name == page.runtimeType.toString()) {
+    return;
+  }
   Navigator.push(
     context,
     PageRouteBuilder(
-      transitionDuration: const Duration(milliseconds: 800),
+      settings: RouteSettings(name: page.runtimeType.toString()),
+      transitionDuration: const Duration(milliseconds: 500),
       transitionsBuilder: (context, animation, secondaryAnimation, child) {
         return SlideTransition(
           position: animation.drive(tween),
