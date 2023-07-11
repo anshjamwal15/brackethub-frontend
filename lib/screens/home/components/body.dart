@@ -1,4 +1,4 @@
-import 'package:brackethub_app/data/cubits/internet_cubit.dart';
+import 'package:brackethub_app/logic/cubits/internet_cubit.dart';
 import 'package:brackethub_app/screens/home/components/main_screen.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/widgets/bottom_navigation_bar.dart';
