@@ -36,31 +36,11 @@ class _DefaultState extends State<Default> {
                   height: 200,
                 ),
                 const SizedBox(height: 40),
-                Text(
+                customText(
                   "Bracket Hub",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    shadows: const [
-                      Shadow(
-                        color: Colors.black,
-                        blurRadius: 2,
-                        offset: Offset(1, 1),
-                      ),
-                    ],
-                    foreground: Paint()
-                      ..shader = const LinearGradient(
-                        colors: [
-                          Colors.purple,
-                          Colors.white,
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ).createShader(
-                        const Rect.fromLTWH(0, 0, 200, 70),
-                      ),
-                  ),
-                ),
+                  30,
+                  FontWeight.bold,
+                )
               ],
             ),
           )

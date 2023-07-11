@@ -23,32 +23,11 @@ class Body extends StatelessWidget {
                   height: 200,
                 ),
                 const SizedBox(height: 40),
-                Text(
+                customText(
                   "Create, share and play quizzes whenever and wherever you want",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 35,
-                    fontWeight: FontWeight.bold,
-                    shadows: const [
-                      Shadow(
-                        color: Colors.black,
-                        blurRadius: 2,
-                        offset: Offset(1, 1),
-                      ),
-                    ],
-                    foreground: Paint()
-                      ..shader = const LinearGradient(
-                        colors: [
-                          Colors.purple,
-                          Colors.white,
-                        ],
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                      ).createShader(
-                        const Rect.fromLTWH(0, 0, 200, 70),
-                      ),
-                  ),
-                ),
+                  35,
+                  FontWeight.bold,
+                )
               ],
             ),
           ),

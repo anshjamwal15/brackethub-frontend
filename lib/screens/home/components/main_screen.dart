@@ -1,5 +1,9 @@
+import 'package:brackethub_app/utils/app_style.dart';
+import 'package:brackethub_app/utils/smooth_page_transition.dart';
+import 'package:brackethub_app/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_svg/svg.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
@@ -10,9 +14,57 @@ class MainScreen extends StatelessWidget {
     1) first timers screen.
     2) last app state screen.
     */
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [Text("data")],
+    final Size size = MediaQuery.of(context).size;
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SvgPicture.asset(
+            "assets/images/location_search.svg",
+            width: 200,
+            height: 200,
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          customText(
+            "You don't have any direct messages yet",
+            17,
+            FontWeight.bold,
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          customText(
+            "When you chat with friends directly it will show up here.",
+            15,
+            FontWeight.w300,
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          GestureDetector(
+            onTap: () {},
+            child: Material(
+              color: kPrimaryColor,
+              borderRadius: BorderRadius.circular(size.width * 5),
+              child: Container(
+                width: double.infinity,
+                height: size.height * 0.06,
+                alignment: Alignment.center,
+                child: Text(
+                  'Add Friends',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    color: Colors.white,
+                    fontSize: size.width * 0.04,
+                  ),
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

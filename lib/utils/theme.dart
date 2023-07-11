@@ -54,3 +54,32 @@ AppBarTheme appBarTheme() {
       iconTheme: IconThemeData(color: Colors.white),
       titleTextStyle: TextStyle(color: Colors.white, fontSize: 18));
 }
+
+Text customText(String text, double fontSize, FontWeight weight) {
+  return Text(
+    text,
+    textAlign: TextAlign.center,
+    style: TextStyle(
+      fontSize: fontSize,
+      fontWeight: weight,
+      shadows: const [
+        Shadow(
+          color: Colors.black,
+          blurRadius: 2,
+          offset: Offset(1, 1),
+        ),
+      ],
+      foreground: Paint()
+        ..shader = const LinearGradient(
+          colors: [
+            Colors.white,
+            Colors.white,
+          ],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ).createShader(
+          const Rect.fromLTWH(0, 0, 200, 70),
+        ),
+    ),
+  );
+}
