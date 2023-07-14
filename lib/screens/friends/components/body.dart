@@ -1,4 +1,4 @@
-import 'package:brackethub_app/screens/friends/screens/new_user.dart';
+import 'package:brackethub_app/screens/friends/screens/friends_list.dart';
 import 'package:flutter/material.dart';
 
 class Body extends StatelessWidget {
@@ -6,6 +6,6 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const NewUser();
+    return const FriendsList();
   }
 }

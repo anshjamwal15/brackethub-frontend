@@ -1,4 +1,4 @@
-import 'package:brackethub_app/utils/app_style.dart';
+import 'package:brackethub_app/screens/friends/components/custom_app_bar.dart';
 import 'package:brackethub_app/utils/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,33 +8,9 @@ class NewUser extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: kBackground2Color,
-        automaticallyImplyLeading: false,
-        leadingWidth: 120,
-        leading: Center(
-          child: customText(
-            "Friends",
-            25,
-            FontWeight.bold,
-          ),
-        ),
-        actionsIconTheme: const IconThemeData(size: 25),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.post_add, color: Colors.white),
-            onPressed: () {},
-          ),
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: IconButton(
-              icon: const Icon(Icons.group_add_rounded, color: Colors.white),
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
+      appBar: const CustomAppBar(),
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -42,20 +18,19 @@ class NewUser extends StatelessWidget {
           children: [
             SvgPicture.asset(
               "assets/images/people.svg",
-              width: 200,
-              height: 200,
+              width: size.width * 0.5,
+              height: size.width * 0.5,
             ),
-            const SizedBox(
-              height: 15,
-            ),
+            const SizedBox(height: 15),
             customText(
-                "None of your friends are here yet", 20, FontWeight.bold),
-            const SizedBox(
-              height: 5,
+              "None of your friends are here yet",
+              size.width * 0.06,
+              FontWeight.bold,
             ),
+            const SizedBox(height: 5),
             customSecondaryText(
               "Start a conversation by finding a friend who's already on bracketHub",
-              16,
+              size.width * 0.04,
               FontWeight.w400,
             ),
           ],

@@ -21,13 +21,6 @@ class Body extends StatelessWidget {
         }
       },
       child: Scaffold(
-        // appBar: AppBar(
-        //   backgroundColor: state == InternetState.gained
-        //       ? kBackgroundColor
-        //       : Colors.red[400],
-        //   automaticallyImplyLeading: false,
-        //   p
-        // ),
         body: Row(
           children: [
             Expanded(
