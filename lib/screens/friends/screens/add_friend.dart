@@ -80,10 +80,11 @@ class AddFriend extends StatelessWidget {
                       height: size.height * 0.07,
                       alignment: Alignment.center,
                       child: Text(
-                        'LOGIN',
+                        'Send Friend Request',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: size.width * 0.05,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
                     ),
