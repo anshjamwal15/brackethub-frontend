@@ -65,8 +65,8 @@ class _InputFieldsState extends State<InputFields> {
     return Padding(
       padding: EdgeInsets.only(
         top: size.height * 0.05,
-        left: size.width * 0.04,
-        right: size.width * 0.04,
+        left: size.width * 0.06,
+        right: size.width * 0.02,
       ),
       child: SizedBox(
         width: size.width * 0.87,

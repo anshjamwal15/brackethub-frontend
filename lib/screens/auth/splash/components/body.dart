@@ -23,10 +23,11 @@ class Body extends StatelessWidget {
                   height: 200,
                 ),
                 const SizedBox(height: 40),
-                customText(
-                  "Create, share and play quizzes whenever and wherever you want",
-                  35,
-                  FontWeight.bold,
+                const CustomText(
+                  text:
+                      "Create, share and play quizzes whenever and wherever you want",
+                  fontSize: 35,
+                  weight: FontWeight.bold,
                 )
               ],
             ),

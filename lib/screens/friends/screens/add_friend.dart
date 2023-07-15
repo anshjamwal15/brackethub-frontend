@@ -26,20 +26,21 @@ class AddFriend extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                customText(
-                  "Add your friend on bracketHub",
-                  size.width * 0.07,
-                  FontWeight.bold,
-                ),
+                CustomText(
+                  text: "Add your friend on bracketHub",
+                  fontSize: size.width * 0.07,
+                  weight: FontWeight.bold,
+                )
               ],
             ),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: customText(
-              "You will need both their username and a tag. Keep in mind that username is case sensitive.",
-              size.width * 0.04,
-              FontWeight.normal,
+            child: CustomText(
+              text:
+                  "You will need both their username and a tag. Keep in mind that username is case sensitive.",
+              fontSize: size.width * 0.04,
+              weight: FontWeight.normal,
             ),
           ),
           SizedBox(

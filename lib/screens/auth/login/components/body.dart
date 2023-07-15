@@ -12,7 +12,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: appBar(context),
+      appBar: CustomAppBar(context: context),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -31,15 +31,20 @@ class Body extends StatelessWidget {
             const InputFields(),
             Column(
               children: [
-                Row(
-                  children: [
-                    const CustomCheckBox(),
-                    Text(
-                      "Remember me",
-                      style: TextStyle(
-                          color: Colors.white, fontSize: size.width * 0.04),
-                    ),
-                  ],
+                Padding(
+                  padding: EdgeInsets.only(left: size.width * 0.02),
+                  child: Row(
+                    children: [
+                      const CustomCheckBox(),
+                      Text(
+                        "Remember me",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: size.width * 0.04,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 SizedBox(
                   height: size.height * 0.03,

@@ -11,7 +11,7 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: appBar(context),
+      appBar: CustomAppBar(context: context),
       body: SingleChildScrollView(
         child: Column(
           children: [

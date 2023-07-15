@@ -1,4 +1,5 @@
-import 'package:brackethub_app/screens/friends/components/custom_app_bar.dart';
+import 'package:brackethub_app/screens/friends/components/custom_app_bar.dart'
+    as local;
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/utils/theme.dart';
 import 'package:flutter/material.dart';
@@ -10,13 +11,17 @@ class FriendsList extends StatelessWidget {
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: const CustomAppBar(),
+      appBar: const local.CustomAppBar(),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 20, top: 20),
-            child: customSecondaryText("OFFLINE-2", 15, FontWeight.w600),
+          const Padding(
+            padding: EdgeInsets.only(left: 20, top: 20),
+            child: CustomSecondaryText(
+              text: "OFFLINE-2",
+              fontSize: 15,
+              weight: FontWeight.w600,
+            ),
           ),
           const SizedBox(height: 10),
           Expanded(
@@ -50,40 +55,35 @@ class Friend extends StatelessWidget {
         padding: const EdgeInsets.only(left: 20),
         child: Column(
           children: [
-            Row(
+            const Row(
               children: [
-                userContainer(
+                _UserContainer(
                   "assets/images/user_image.jpeg",
-                  context,
                   false,
                 ),
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 15),
-                      child: customText(
-                        "TestUser",
-                        20,
-                        FontWeight.w500,
+                      padding: EdgeInsets.only(left: 15),
+                      child: CustomText(
+                        text: "TestUser",
+                        fontSize: 20,
+                        weight: FontWeight.w500,
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(right: 25),
-                      child: customSecondaryText(
-                        "Offline",
-                        10,
-                        FontWeight.normal,
+                      padding: EdgeInsets.only(right: 25),
+                      child: CustomSecondaryText(
+                        text: "Offline",
+                        fontSize: 10,
+                        weight: FontWeight.normal,
                       ),
                     )
                   ],
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(left: 180),
-                  child: iconContainer(
-                    Icons.close,
-                    context,
-                    color: kBackground2Color,
-                  ),
+                  padding: EdgeInsets.only(left: 180),
+                  child: _IconContainer(kBackgroundColor, Icons.close),
                 )
               ],
             ),
@@ -101,69 +101,81 @@ class Friend extends StatelessWidget {
   }
 }
 
-Widget userContainer(String imageURL, BuildContext context, bool isOnline) {
-  final screenWidth = MediaQuery.of(context).size.width;
-  final containerSize = screenWidth * 0.14;
-  final onlineIconSize = containerSize * 0.3;
-  final innerCircleSize = onlineIconSize * 0.4;
-  return Stack(
-    children: [
-      Container(
-        width: containerSize,
-        height: containerSize,
-        decoration: BoxDecoration(
-          shape: BoxShape.circle,
-          image: DecorationImage(
-            image: AssetImage(imageURL),
-          ),
-        ),
-      ),
-      Positioned(
-        bottom: 0,
-        right: 0,
-        child: Container(
-          width: onlineIconSize,
-          height: onlineIconSize,
+class _UserContainer extends StatelessWidget {
+  const _UserContainer(this.imageURL, this.isOnline);
+  final String imageURL;
+  final bool isOnline;
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final containerSize = screenWidth * 0.14;
+    final onlineIconSize = containerSize * 0.3;
+    final innerCircleSize = onlineIconSize * 0.4;
+    return Stack(
+      children: [
+        Container(
+          width: containerSize,
+          height: containerSize,
           decoration: BoxDecoration(
-            color: isOnline == true ? Colors.green : Colors.grey,
             shape: BoxShape.circle,
-            border: Border.all(
-              color: kBackgroundColor,
-              width: 2,
+            image: DecorationImage(
+              image: AssetImage(imageURL),
             ),
           ),
-          child: Center(
-            child: Container(
-              width: innerCircleSize,
-              height: innerCircleSize,
-              decoration: const BoxDecoration(
-                shape: BoxShape.circle,
+        ),
+        Positioned(
+          bottom: 0,
+          right: 0,
+          child: Container(
+            width: onlineIconSize,
+            height: onlineIconSize,
+            decoration: BoxDecoration(
+              color: isOnline == true ? Colors.green : Colors.grey,
+              shape: BoxShape.circle,
+              border: Border.all(
                 color: kBackgroundColor,
+                width: 2,
+              ),
+            ),
+            child: Center(
+              child: Container(
+                width: innerCircleSize,
+                height: innerCircleSize,
+                decoration: const BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: kBackgroundColor,
+                ),
               ),
             ),
           ),
         ),
-      ),
-    ],
-  );
+      ],
+    );
+  }
 }
 
-Widget iconContainer(IconData iconData, BuildContext context, {Color? color}) {
-  final screenWidth = MediaQuery.of(context).size.width;
-  final containerSize = screenWidth * 0.10;
-  return Container(
-    width: containerSize,
-    height: containerSize,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      color: color,
-    ),
-    child: Center(
-      child: Icon(
-        iconData,
-        color: Colors.grey[400],
-        size: containerSize * 0.6,
+class _IconContainer extends StatelessWidget {
+  const _IconContainer(this.color, this.iconData);
+  final Color color;
+  final IconData iconData;
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final containerSize = screenWidth * 0.10;
+    return Container(
+      width: containerSize,
+      height: containerSize,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: color,
       ),
-    ),
-  );
+      child: Center(
+        child: Icon(
+          iconData,
+          color: Colors.grey[400],
+          size: containerSize * 0.6,
+        ),
+      ),
+    );
+  }
 }

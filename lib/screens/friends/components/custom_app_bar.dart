@@ -13,11 +13,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: kBackground2Color,
       automaticallyImplyLeading: false,
       leadingWidth: 120,
-      leading: Center(
-        child: customText(
-          "Friends",
-          25,
-          FontWeight.bold,
+      leading: const Center(
+        child: CustomText(
+          text: "Friends",
+          fontSize: 25,
+          weight: FontWeight.bold,
         ),
       ),
       actionsIconTheme: const IconThemeData(size: 25),

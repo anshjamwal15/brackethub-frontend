@@ -36,10 +36,10 @@ class _DefaultState extends State<Default> {
                   height: 200,
                 ),
                 const SizedBox(height: 40),
-                customText(
-                  "Bracket Hub",
-                  30,
-                  FontWeight.bold,
+                const CustomText(
+                  text: "Bracket Hub",
+                  fontSize: 30,
+                  weight: FontWeight.bold,
                 )
               ],
             ),

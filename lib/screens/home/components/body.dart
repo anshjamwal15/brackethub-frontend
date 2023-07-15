@@ -35,14 +35,12 @@ class Body extends StatelessWidget {
                         vertical: getIconVerticalSpacing(context),
                       ),
                       child: index == 0
-                          ? iconContainer(
+                          ? const _IconContainer(
+                              kPrimaryColor,
                               Icons.message_rounded,
-                              context,
-                              color: kPrimaryColor,
                             )
-                          : userContainer(
+                          : const _UserContainer(
                               "assets/images/male_avatar.png",
-                              context,
                             ),
                     );
                   },
@@ -83,47 +81,66 @@ class Body extends StatelessWidget {
   }
 }
 
-Widget iconContainer(IconData iconData, BuildContext context, {Color? color}) {
-  final screenWidth = MediaQuery.of(context).size.width;
-  final containerSize = screenWidth * 0.16;
-  return Container(
-    width: containerSize,
-    height: containerSize,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      color: color,
-    ),
-    child: Center(
-      child: Icon(
-        iconData,
-        color: Colors.white,
-        size: containerSize * 0.5,
+// Widget iconContainer(IconData iconData, BuildContext context, {Color? color}) {
+
+// }
+class _IconContainer extends StatelessWidget {
+  const _IconContainer(this.colorData, this.iconData);
+  final Color colorData;
+  final IconData iconData;
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final containerSize = screenWidth * 0.16;
+    return Container(
+      width: containerSize,
+      height: containerSize,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        color: colorData,
       ),
-    ),
-  );
+      child: Center(
+        child: Icon(
+          iconData,
+          color: Colors.white,
+          size: containerSize * 0.5,
+        ),
+      ),
+    );
+  }
 }
 
-Widget userContainer(String imageURL, BuildContext context) {
-  final screenWidth = MediaQuery.of(context).size.width;
-  final containerSize = screenWidth * 0.16;
-  return Container(
-    width: containerSize,
-    height: containerSize,
-    decoration: BoxDecoration(
-      shape: BoxShape.circle,
-      image: DecorationImage(
-        image: AssetImage(imageURL),
+// Widget userContainer(String imageURL, BuildContext context) {
+
+// }
+class _UserContainer extends StatelessWidget {
+  const _UserContainer(this.imageURL);
+  final String imageURL;
+  @override
+  Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final containerSize = screenWidth * 0.16;
+    return Container(
+      width: containerSize,
+      height: containerSize,
+      decoration: BoxDecoration(
+        shape: BoxShape.circle,
+        image: DecorationImage(
+          image: AssetImage(imageURL),
+        ),
       ),
-    ),
-  );
+    );
+  }
 }
 
 void showSnackBar(BuildContext context, String content) {
-  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    content: Text(content),
-    backgroundColor: Colors.red[400],
-    behavior: SnackBarBehavior.floating,
-    showCloseIcon: true,
-    duration: const Duration(seconds: 10),
-  ));
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text(content),
+      backgroundColor: Colors.red[400],
+      behavior: SnackBarBehavior.floating,
+      showCloseIcon: true,
+      duration: const Duration(seconds: 10),
+    ),
+  );
 }

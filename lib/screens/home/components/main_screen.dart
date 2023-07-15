@@ -26,18 +26,18 @@ class MainScreen extends StatelessWidget {
           const SizedBox(
             height: 15,
           ),
-          customText(
-            "You don't have any direct messages yet",
-            17,
-            FontWeight.bold,
+          const CustomText(
+            text: "You don't have any direct messages yet",
+            fontSize: 17,
+            weight: FontWeight.bold,
           ),
           const SizedBox(
             height: 8,
           ),
-          customText(
-            "When you chat with friends directly it will show up here.",
-            15,
-            FontWeight.w300,
+          const CustomText(
+            text: "When you chat with friends directly it will show up here.",
+            fontSize: 15,
+            weight: FontWeight.w300,
           ),
           const SizedBox(
             height: 8,
