@@ -81,9 +81,6 @@ class Body extends StatelessWidget {
   }
 }
 
-// Widget iconContainer(IconData iconData, BuildContext context, {Color? color}) {
-
-// }
 class _IconContainer extends StatelessWidget {
   const _IconContainer(this.colorData, this.iconData);
   final Color colorData;
