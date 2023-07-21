@@ -2,6 +2,7 @@ import 'package:brackethub_app/screens/friends/components/custom_app_bar.dart'
     as local;
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/utils/theme.dart';
+import 'package:brackethub_app/widgets/user_status_container.dart';
 import 'package:flutter/material.dart';
 
 class FriendsList extends StatelessWidget {
@@ -57,7 +58,7 @@ class Friend extends StatelessWidget {
           children: [
             const Row(
               children: [
-                _UserContainer(
+                UserStatusContainer(
                   "assets/images/user_image.jpeg",
                   false,
                 ),
@@ -97,59 +98,6 @@ class Friend extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class _UserContainer extends StatelessWidget {
-  const _UserContainer(this.imageURL, this.isOnline);
-  final String imageURL;
-  final bool isOnline;
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final containerSize = screenWidth * 0.14;
-    final onlineIconSize = containerSize * 0.3;
-    final innerCircleSize = onlineIconSize * 0.4;
-    return Stack(
-      children: [
-        Container(
-          width: containerSize,
-          height: containerSize,
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            image: DecorationImage(
-              image: AssetImage(imageURL),
-            ),
-          ),
-        ),
-        Positioned(
-          bottom: 0,
-          right: 0,
-          child: Container(
-            width: onlineIconSize,
-            height: onlineIconSize,
-            decoration: BoxDecoration(
-              color: isOnline == true ? Colors.green : Colors.grey,
-              shape: BoxShape.circle,
-              border: Border.all(
-                color: kBackgroundColor,
-                width: 2,
-              ),
-            ),
-            child: Center(
-              child: Container(
-                width: innerCircleSize,
-                height: innerCircleSize,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: kBackgroundColor,
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
     );
   }
 }

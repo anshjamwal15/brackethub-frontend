@@ -1,4 +1,5 @@
 import 'package:brackethub_app/logic/cubits/internet_cubit.dart';
+import 'package:brackethub_app/screens/home/components/friends_list.dart';
 import 'package:brackethub_app/screens/home/components/main_screen.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/widgets/bottom_navigation_bar.dart';
@@ -52,10 +53,11 @@ class Body extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
                       padding: EdgeInsets.all(16.0),
-                      child: MainScreen(),
+                      child: FriendsList(),
                     ),
                   ],
                 ),
