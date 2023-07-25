@@ -42,9 +42,9 @@ class UserStatusContainer extends StatelessWidget {
               child: Container(
                 width: innerCircleSize,
                 height: innerCircleSize,
-                decoration: const BoxDecoration(
+                decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: kBackgroundColor,
+                  color: isOnline == true ? Colors.green : kBackgroundColor,
                 ),
               ),
             ),
