@@ -1,7 +1,8 @@
 import 'package:brackethub_app/logic/cubits/internet_cubit.dart';
-import 'package:brackethub_app/screens/home/components/friends_list.dart';
+import 'package:brackethub_app/screens/home/screens/friends_list.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/widgets/bottom_navigation_bar.dart';
+import 'package:brackethub_app/widgets/icon_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,6 +11,7 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return BlocListener<InternetCubit, InternetState>(
       listener: (context, state) {
         switch (state) {
@@ -35,9 +37,11 @@ class Body extends StatelessWidget {
                         vertical: getIconVerticalSpacing(context),
                       ),
                       child: index == 0
-                          ? const _IconContainer(
+                          ? IconContainer(
                               kPrimaryColor,
                               Icons.message_rounded,
+                              size.width * 0.09,
+                              size.width * 0.16,
                             )
                           : const _UserContainer(
                               "assets/images/male_avatar.png",
@@ -71,35 +75,6 @@ class Body extends StatelessWidget {
   }
 }
 
-class _IconContainer extends StatelessWidget {
-  const _IconContainer(this.colorData, this.iconData);
-  final Color colorData;
-  final IconData iconData;
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final containerSize = screenWidth * 0.16;
-    return Container(
-      width: containerSize,
-      height: containerSize,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: colorData,
-      ),
-      child: Center(
-        child: Icon(
-          iconData,
-          color: Colors.white,
-          size: containerSize * 0.5,
-        ),
-      ),
-    );
-  }
-}
-
-// Widget userContainer(String imageURL, BuildContext context) {
-
-// }
 class _UserContainer extends StatelessWidget {
   const _UserContainer(this.imageURL);
   final String imageURL;

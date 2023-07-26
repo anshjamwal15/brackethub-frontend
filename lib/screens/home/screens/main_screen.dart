@@ -1,7 +1,6 @@
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/utils/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
 class MainScreen extends StatelessWidget {
@@ -9,10 +8,6 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    /* TODO: Write bloc for 
-    1) first timers screen.
-    2) last app state screen.
-    */
     final Size size = MediaQuery.of(context).size;
     return Center(
       child: Column(
