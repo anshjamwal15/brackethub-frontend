@@ -34,6 +34,7 @@ class _BottomChatBar extends StatelessWidget {
       ),
       child: Row(
         children: [
+          const SizedBox(width: 10),
           IconContainer(
             kBackground2Color,
             Icons.add,
@@ -48,7 +49,14 @@ class _BottomChatBar extends StatelessWidget {
             size.width * 0.10,
           ),
           const SizedBox(width: 10),
-          const Expanded(child: _InputField()),
+          const _InputField(),
+          const SizedBox(width: 10),
+          IconContainer(
+            kBackground2Color,
+            Icons.send,
+            size.width * 0.05,
+            size.width * 0.10,
+          )
         ],
       ),
     );
@@ -58,12 +66,16 @@ class _BottomChatBar extends StatelessWidget {
 // FIXME: fix text input field
 class _InputField extends StatelessWidget {
   const _InputField();
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Container(
-      color: kBackground2Color,
+      width: size.width * 0.58,
+      height: size.height * 0.055,
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        color: kBackground2Color,
+      ),
       child: TextFormField(
         style: const TextStyle(color: Colors.white, fontSize: 16.0),
         decoration: InputDecoration(
@@ -73,7 +85,7 @@ class _InputField extends StatelessWidget {
           hintText: "Message @Test User",
           hintStyle: TextStyle(color: Colors.grey[300]),
           contentPadding: const EdgeInsets.symmetric(
-            vertical: 12.0,
+            vertical: 10.0,
             horizontal: 12.0,
           ),
         ),
