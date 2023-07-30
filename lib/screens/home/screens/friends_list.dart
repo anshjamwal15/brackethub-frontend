@@ -56,8 +56,8 @@ class FriendsList extends StatelessWidget {
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.all(5.0),
+                        const Padding(
+                          padding: EdgeInsets.all(5.0),
                           child: UserStatusContainer(
                             "assets/images/user_image.jpeg",
                             false,

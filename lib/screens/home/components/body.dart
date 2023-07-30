@@ -3,6 +3,7 @@ import 'package:brackethub_app/screens/home/screens/friends_list.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/widgets/bottom_navigation_bar.dart';
 import 'package:brackethub_app/widgets/icon_container.dart';
+import 'package:brackethub_app/widgets/user_image_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -43,8 +44,9 @@ class Body extends StatelessWidget {
                               size.width * 0.09,
                               size.width * 0.16,
                             )
-                          : const _UserContainer(
+                          : UserImageContainer(
                               "assets/images/male_avatar.png",
+                              size.width * 0.16,
                             ),
                     );
                   },
@@ -72,26 +74,6 @@ class Body extends StatelessWidget {
     final screenHeight = MediaQuery.of(context).size.height;
     const paddingPercentage = 0.01;
     return screenHeight * paddingPercentage;
-  }
-}
-
-class _UserContainer extends StatelessWidget {
-  const _UserContainer(this.imageURL);
-  final String imageURL;
-  @override
-  Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final containerSize = screenWidth * 0.16;
-    return Container(
-      width: containerSize,
-      height: containerSize,
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        image: DecorationImage(
-          image: AssetImage(imageURL),
-        ),
-      ),
-    );
   }
 }
 

@@ -1,4 +1,5 @@
 import 'package:brackethub_app/screens/messages/components/custom_app_bar.dart';
+import 'package:brackethub_app/screens/messages/screens/new_user.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/widgets/icon_container.dart';
 import 'package:flutter/material.dart';
@@ -8,10 +9,14 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: CustomAppBar(username: "Test User", isOnline: false),
-      body: Text("data "),
-      bottomNavigationBar: _BottomChatBar(),
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      appBar: const CustomAppBar(username: "Test User", isOnline: false),
+      body: const NewUser(),
+      bottomNavigationBar: Padding(
+        padding: MediaQuery.of(context).viewInsets,
+        child: const _BottomChatBar(),
+      ),
     );
   }
 }
@@ -27,7 +32,7 @@ class _BottomChatBar extends StatelessWidget {
       decoration: const BoxDecoration(
         border: Border(
           top: BorderSide(
-            color: kBackground2Color, // Replace this with your desired color
+            color: kBackground2Color,
             width: 1.0,
           ),
         ),
@@ -52,7 +57,7 @@ class _BottomChatBar extends StatelessWidget {
           const _InputField(),
           const SizedBox(width: 10),
           IconContainer(
-            kBackground2Color,
+            kPrimaryColor,
             Icons.send,
             size.width * 0.05,
             size.width * 0.10,
@@ -63,7 +68,6 @@ class _BottomChatBar extends StatelessWidget {
   }
 }
 
-// FIXME: fix text input field
 class _InputField extends StatelessWidget {
   const _InputField();
   @override
@@ -77,6 +81,7 @@ class _InputField extends StatelessWidget {
         color: kBackground2Color,
       ),
       child: TextFormField(
+        autofocus: true,
         style: const TextStyle(color: Colors.white, fontSize: 16.0),
         decoration: InputDecoration(
           filled: true,
