@@ -8,39 +8,33 @@ class NewUser extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SingleChildScrollView(
-        reverse: true,
-        child: Padding(
-          padding: const EdgeInsets.only(left: 15, top: 440),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              UserImageContainer(
-                "assets/images/user_image.jpeg",
-                size.width * 0.3,
-              ),
-              CustomText(
-                text: "Test User",
-                fontSize: size.height * 0.05,
-                weight: FontWeight.bold,
-              ),
-              CustomSecondaryText(
-                text: "Test User#0000",
-                fontSize: size.width * 0.05,
-                weight: FontWeight.w400,
-              ),
-              SizedBox(height: size.height * 0.01),
-              CustomSecondaryText(
-                text:
-                    "This is the very beginning of your conversation with Test User.",
-                fontSize: size.width * 0.035,
-                weight: FontWeight.w400,
-              ),
-            ],
+    return Padding(
+      padding: const EdgeInsets.only(left: 15, top: 440),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          UserImageContainer(
+            "assets/images/user_image.jpeg",
+            size.width * 0.3,
           ),
-        ),
+          CustomText(
+            text: "Test User",
+            fontSize: size.height * 0.05,
+            weight: FontWeight.bold,
+          ),
+          CustomSecondaryText(
+            text: "Test User#0000",
+            fontSize: size.width * 0.05,
+            weight: FontWeight.w400,
+          ),
+          SizedBox(height: size.height * 0.01),
+          CustomSecondaryText(
+            text:
+                "This is the very beginning of your conversation with Test User.",
+            fontSize: size.width * 0.035,
+            weight: FontWeight.w400,
+          ),
+        ],
       ),
     );
   }

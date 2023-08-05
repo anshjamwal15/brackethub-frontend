@@ -11,8 +11,16 @@ class Body extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: const bar.CustomAppBar(username: "Test User", isOnline: false),
-      body: const NewUser(),
+      body: const SingleChildScrollView(
+        reverse: true,
+        child: Column(
+          children: [
+            NewUser(),
+          ],
+        ),
+      ),
       bottomNavigationBar: Padding(
         padding: MediaQuery.of(context).viewInsets,
         child: const _BottomChatBar(),
@@ -81,9 +89,6 @@ class _InputField extends StatelessWidget {
         color: kBackground2Color,
       ),
       child: TextFormField(
-        scrollPadding:
-            EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-        autofocus: true,
         style: const TextStyle(color: Colors.white, fontSize: 16.0),
         decoration: InputDecoration(
           filled: true,
