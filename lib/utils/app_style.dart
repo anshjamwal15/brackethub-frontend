@@ -6,3 +6,4 @@ const kTextColor = Color(0xFF000000);
 const kBackgroundColor = Color(0xff312E33);
 const kBackground2Color = Color.fromARGB(255, 43, 40, 44);
 const kButtonColor = Color.fromARGB(255, 88, 88, 88);
+const kCustomTextColor = Color.fromARGB(255, 143, 141, 141);

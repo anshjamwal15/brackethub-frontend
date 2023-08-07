@@ -1,5 +1,5 @@
-import 'package:brackethub_app/screens/messages/components/custom_app_bar.dart'
-    as bar;
+import 'package:brackethub_app/screens/messages/components/custom_app_bar.dart';
+import 'package:brackethub_app/screens/messages/screens/chat_screen.dart';
 import 'package:brackethub_app/screens/messages/screens/new_user.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/widgets/icon_container.dart';
@@ -12,12 +12,13 @@ class Body extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const bar.CustomAppBar(username: "Test User", isOnline: false),
+      appBar: const CustomAppBar(username: "Test User", isOnline: false),
       body: const SingleChildScrollView(
         reverse: true,
         child: Column(
           children: [
             NewUser(),
+            ChatScreen(),
           ],
         ),
       ),

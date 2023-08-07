@@ -1,4 +1,3 @@
-import 'package:brackethub_app/screens/friends/screens/add_friend.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/utils/online_status_icon.dart';
 import 'package:brackethub_app/utils/theme.dart';
