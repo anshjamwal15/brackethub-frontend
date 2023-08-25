@@ -1,9 +1,12 @@
 import 'package:brackethub_app/screens/messages/components/custom_app_bar.dart';
+import 'package:brackethub_app/screens/messages/logic/blocs/message_bloc/message_bloc.dart';
 import 'package:brackethub_app/screens/messages/screens/chat_screen.dart';
-import 'package:brackethub_app/screens/messages/screens/new_user.dart';
 import 'package:brackethub_app/utils/app_style.dart';
 import 'package:brackethub_app/widgets/icon_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+TextEditingController _messageEditingController = TextEditingController();
 
 class Body extends StatelessWidget {
   const Body({super.key});
@@ -13,15 +16,13 @@ class Body extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       appBar: const CustomAppBar(username: "Test User", isOnline: false),
-      body: const SingleChildScrollView(
-        reverse: true,
-        child: Column(
-          children: [
-            NewUser(),
-            ChatScreen(),
-          ],
-        ),
-      ),
+      // body: const SingleChildScrollView(
+      //   reverse: true,
+      //   child: Column(
+      //     children: [ChatScreen()],
+      //   ),
+      // ),
+      body: const ChatScreen(),
       bottomNavigationBar: Padding(
         padding: MediaQuery.of(context).viewInsets,
         child: const _BottomChatBar(),
@@ -65,6 +66,17 @@ class _BottomChatBar extends StatelessWidget {
           const SizedBox(width: 10),
           const _InputField(),
           const SizedBox(width: 10),
+          // GestureDetector(
+          //   onTap: () => BlocProvider.of<MessageBloc>(context)
+          //       .add(GetInput(_messageEditingController.text)),
+          //   child: IconContainer(
+          //     kPrimaryColor,
+          //     Icons.send,
+          //     size.width * 0.05,
+          //     size.width * 0.10,
+          //   ),
+          // )
+          // TODO: fix bloc
           IconContainer(
             kPrimaryColor,
             Icons.send,
@@ -90,6 +102,7 @@ class _InputField extends StatelessWidget {
         color: kBackground2Color,
       ),
       child: TextFormField(
+        controller: _messageEditingController,
         style: const TextStyle(color: Colors.white, fontSize: 16.0),
         decoration: InputDecoration(
           filled: true,

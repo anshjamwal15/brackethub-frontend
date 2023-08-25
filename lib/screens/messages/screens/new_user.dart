@@ -9,7 +9,7 @@ class NewUser extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return Padding(
-      padding: const EdgeInsets.only(top: 440, right: 15),
+      padding: const EdgeInsets.only(right: 15, left: 15, top: 10),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
